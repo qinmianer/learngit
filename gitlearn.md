@@ -228,3 +228,29 @@ $ git commit --amend
 删除一个本地标签 `git tag -d <tagname>`
 
 删除一个远程标签 `git push origin :refs/tags/<tagname>`可以删除一个远程标签。
+
+
+
+# 分支
+
+在进行提交操作时，Git 会保存一个**提交对象**（commit object）。该提交对象会包含一个指向暂存内容快照的指针、作者的姓名和邮箱、提交时输入的信息以及指向它的父对象的指针。 首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象， 而由多个分支合并产生的提交对象有多个父对象
+
+**Git 的分支，其实本质上仅仅是指向提交对象的可变指针**。 Git 的默认分支名字是 `master`.是在git init之后自动创建的，很多人懒得改这个名字。
+
+`HEAD`是一个指针，指向当前所在的本地分支
+
+<img src="assets/2023-05-06-17-09-01-image.png" title="" alt="" width="455">
+
+创建分支：`git branch <branch_name>`
+
+- 仅仅 **创建** 一个新分支，并不会自动切换到新分支中去。
+
+切换到一个已存在的分支：`git checkout <branch_name>`
+
+- 这样 `HEAD` 就指向新的分支了。此时如果修改文件、再提交，新分支会前移，而master分支不动
+
+- 如果此时再`git checkout mater`, **会做两件事：HEAD指向master分支，将工作目录恢复成 `master` 分支所指向的快照内容。分支切换会改变你工作目录中的文件！**
+
+创建新分支的同时切换过去： `git checkout -b <newbranchname>`
+
+- 一条命令搞定创建+切换分支

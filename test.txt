@@ -4,3 +4,5 @@ Git is a software.
 Git has a mutable index called stage.
 
 Changes from [hotfix] branch.
+add something, in testing brach.
+Add something 2, in testing brach.
